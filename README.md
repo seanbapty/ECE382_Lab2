@@ -30,3 +30,8 @@ decryptCharacter:
             ret
 ```
 This subroutine is call-by-value because it does not manipulate the memory location of message or the message pointers, but manipulates the values themselves.
+##Debugging
+While debugging the code there were several problem points. First, in order to prevent registers from resetting to 0 when incremented, the must be incremented byte-wise. This was evident when the code was stepped through, because whenever the inc.b Rx came up, the register value would reset to 0 and then be incremented to 1. Additionally, I found it helpful to include a paper list of what registers were being used for what. This prevented confusion when deciding how to implement what was desired next. Finally, it is important to remember to be careful when using registers and subroutines, because initially a register was manipulated in both subroutines in addition to the "Main" thus destryoing the register.
+##Testing
+The testing for this program was simple. Since it was designed to decrypt a particular message, the message and key were loaded into ROM for the program to decrypt. It became apparent once this program was run correctly (after several mistrials) because 
+the output in RAM was a comprehensible message reading a congratulatory note. It was determined that further testing would be unnessary, however, the program was also checked by hand XORing several bytes from the message with the key. 
